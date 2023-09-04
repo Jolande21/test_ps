@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsteenpu <jsteenpu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/01 17:08:14 by jsteenpu          #+#    #+#             */
-/*   Updated: 2023/09/01 17:13:33 by jsteenpu         ###   ########.fr       */
+/*   Created: 2023/09/04 14:22:00 by jsteenpu          #+#    #+#             */
+/*   Updated: 2023/09/04 15:09:21 by jsteenpu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_list.h"
 
-int	main(int argc, char **argv)
+// creates a new element of t_list type.
+// it should assign data to the given argument and next to NULL
+
+t_list	*ft_create_elem(void *data)
 {
-	if (argc == 1)
-		printf("No arguments provided.");
+	t_list	*created;
 
-	if (argc == 2)
-		ft_split(argv[1]);
-
-	
+	created	= NULL;
+	created = (t_list *)malloc(sizeof(t_list));
+	if (!created)
+		return (0);
+	created->data = data;
+	created->next = NULL;
+	return (created);
 }
