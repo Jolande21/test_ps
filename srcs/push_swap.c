@@ -6,32 +6,31 @@
 /*   By: jsteenpu <jsteenpu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:08:14 by jsteenpu          #+#    #+#             */
-/*   Updated: 2023/09/04 14:37:36 by jsteenpu         ###   ########.fr       */
+/*   Updated: 2023/09/05 10:25:59 by jsteenpu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_node	ft_list_new_element(int	number)
+t_node	*ft_list_new_element(int number)
 {
-	t_node	*created;
+	t_node	*new;
 	
-	created = NULL;
-	created = (t_node)malloc(sizeof(t_node));
-	if (created)
-	{
-		created->value = number;
-		created->next = NULL;
-	}
-	return (created);
+	new = NULL;
+	new = (t_node *)malloc(sizeof(t_node));
+	if (new)
+		return (0);
+	new->value = number;
+	new->next = NULL;
+	return (new);
 }
 
 int	main(int argc, char **argv)
 {
 	char	**split_argv;
 	int		i;
-	t_node	number;
-	t_node	*head;
+	int		number;
+	t_node	*element;
 
 	if (argc == 1)
 		return (0);
@@ -40,20 +39,22 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		split_argv = ft_split(argv[1], ' ');
 	// print the string stored in split_argv
-	i = 0;
-	while (split_argv[i])
-	{
-		printf("%s\n", split_argv[i]);
-		i++;
-	}
+	// i = 0;
+	// while (split_argv[i])
+	// {
+	// 	printf("%s\n", split_argv[i]);
+	// 	i++;
+	// }
 	// if args is more than 2?
-	head = &argv[1];
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
-		number.value = ft_atoi(argv[i]);
+		number = ft_atoi(argv[i]);
+		// check if the return of the atoi is indeed an int number
+		// is digit f.e
+		// what about 0 ?? 
+		element = ft_list_new_element(number);
 		i++;
 	}
-	
 	return (0);
 }
