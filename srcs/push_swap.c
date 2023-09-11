@@ -6,55 +6,60 @@
 /*   By: jsteenpu <jsteenpu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:08:14 by jsteenpu          #+#    #+#             */
-/*   Updated: 2023/09/05 10:25:59 by jsteenpu         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:24:17 by jsteenpu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_node	*ft_list_new_element(int number)
+// creates a list that includes all the integers provided as arg
+t_list	*ft_list_push_nbr(int number)
 {
-	t_node	*new;
-	
-	new = NULL;
-	new = (t_node *)malloc(sizeof(t_node));
-	if (new)
-		return (0);
-	new->value = number;
-	new->next = NULL;
-	return (new);
+	t_list	*list;
+
+	list = NULL;
+	printf("the address of list: %p\n", list);
+	ft_list_push_back(&list, number);
+	return (list);
 }
 
 int	main(int argc, char **argv)
 {
-	char	**split_argv;
+	char	**temp;
 	int		i;
+	int		j;
 	int		number;
-	t_node	*element;
+	t_list	**stack;
 
 	if (argc == 1)
-		return (0);
-		
-	// this works when there is only 1 string as input ?
+		return (-1);
+	
+	// when the set of integer values are provided in 1 arg as a string
 	if (argc == 2)
-		split_argv = ft_split(argv[1], ' ');
-	// print the string stored in split_argv
-	// i = 0;
-	// while (split_argv[i])
-	// {
-	// 	printf("%s\n", split_argv[i]);
-	// 	i++;
-	// }
-	// if args is more than 2?
-	i = 1;
-	while (argv[i])
 	{
-		number = ft_atoi(argv[i]);
-		// check if the return of the atoi is indeed an int number
-		// is digit f.e
-		// what about 0 ?? 
-		element = ft_list_new_element(number);
-		i++;
+		temp = ft_split(argv[1], ' ');
+		if (!temp)
+			return (-1);
+	}
+	else
+	{
+		i = 1;
+		while (argv[i])
+			i++;
+		stack = (t_list *)malloc(sizeof(t_list) * i);
+		if (!stack)
+			return (-1);
+		i = 1;
+		j = 0;
+		while (argv[i])
+		{
+			number = ft_atoi(argv[i]);
+
+			// will create a new list with the numbers provided as arguments
+			stack[j] = ft_list_push_nbr(number);
+			i++;
+			j++;
+		}
 	}
 	return (0);
 }

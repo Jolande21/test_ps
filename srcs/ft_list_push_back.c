@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsteenpu <jsteenpu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 14:22:00 by jsteenpu          #+#    #+#             */
-/*   Updated: 2023/09/05 10:57:37 by jsteenpu         ###   ########.fr       */
+/*   Created: 2023/09/11 10:55:54 by jsteenpu          #+#    #+#             */
+/*   Updated: 2023/09/11 12:11:59 by jsteenpu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "../includes/push_swap.h"
 
-// creates a new element of t_list type.
-// it should assign data to the given argument and next to NULL
+// add a new element of type t_list at the end of the list
 
-t_list	*ft_create_elem(void *data)
+void	ft_list_push_back(t_list **begin_list, int number)
 {
 	t_list	*new;
+	t_list	*last;
 
-	new	= NULL;
-	new = (t_list *)malloc(sizeof(t_list));
+	new = ft_create_elem(number);
 	if (!new)
-		return (0);
-	new->data = data;
-	new->next = NULL;
-	return (new);
+		return ;
+	if (*begin_list == NULL)
+		*begin_list = new;
+	else
+	{
+		last = ft_list_last(*begin_list);
+		last->next = new;
+	}		
 }
